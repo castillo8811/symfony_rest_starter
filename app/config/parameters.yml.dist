@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony_rest_starter
+    database_user: mysql
+    database_password: arkus123
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: $mind@arkus@2017$
+
+    jwt_private_key_path: "%kernel.root_dir%/jwt/private.pem"
+    jwt_public_key_path:  "%kernel.root_dir%/jwt/public.pem"
+    jwt_key_pass_phrase:  '$mind@arkus@2017$'
+    jwt_token_ttl:        8600
