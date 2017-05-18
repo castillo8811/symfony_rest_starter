@@ -16,4 +16,4 @@ Starter REST Project (Symfony 3 [Login Form, API Auth JWT], Boostrap 3)
 
 6.- Add Your admin user -> bin/console  UserManage:add-user --is-admin
 
-7.  To Work!
+7.- To Work!
