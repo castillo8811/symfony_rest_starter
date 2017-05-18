@@ -50,37 +50,39 @@ class SecurityController extends Controller
      *
      * @Route("/logout", name="security_logout")
      */
+
     public function logoutAction()
     {
         throw new \Exception('This should never be reached!');
     }
 
+
     /**
-     *@Route("/api/login-check", name="security_token_authentication")
+     * @Route("/api/login-check", name="security_token_authentication")
      * @Method({"POST"})
      */
 
     public function tokenAuthenticationAction(Request $request)
     {
-        $username = $request->request->get('username','alex');
+        $username = $request->request->get('username', 'alex');
         $password = $request->request->get('password');
 
         $user = $this->getDoctrine()->getRepository('AppBundle:User')
             ->findOneBy(['username' => $username]);
 
 
-        if(!$user) {
+        if (!$user) {
             throw $this->createNotFoundException();
         }
 
         // password check
-        if(!$this->get('security.password_encoder')->isPasswordValid($user, $password)) {
+        if (!$this->get('security.password_encoder')->isPasswordValid($user, $password)) {
             throw $this->createAccessDeniedException();
         }
 
         // Use LexikJWTAuthenticationBundle to create JWT token that hold only information about user name
         $token = $this->get('lexik_jwt_authentication.encoder')
-            ->encode(['username' => $user->getUsername(),'email'=>$user->getEmail(),'roles'=>$user->getRoles()]);
+            ->encode(['username' => $user->getUsername(), 'email' => $user->getEmail(), 'roles' => $user->getRoles()]);
 
         // Return genereted tocken
         return new JsonResponse(['token' => $token]);
@@ -89,7 +91,9 @@ class SecurityController extends Controller
     /**
      * @Route(path="/api/secure-resource", name="secure_resource")
      */
-    public function secureResource(){
+
+    public function secureResource()
+    {
         $data = [
             'test' => 'test',
             'test2' => 'test2'
