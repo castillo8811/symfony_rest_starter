@@ -1,18 +1,13 @@
-interviews
+Symfony 3 Rest Starter
 ==========
 
+Starter REST Project (Symfony 3 [Login Form, API Auth JWT], Boostrap 3)
 
-### Resumen:
-Este es un proyecto creado para el manejo de las **entrevistas**, con el cual se espera reducir el tiempo que toma el realizarlas, como el calificarlas, para asi solo enfocarse en lo que verdaderamente importa, que es ver cual es el **mejor** prospecto para la vacante que se haya abierto.
-
-Tambien se espera ver por medio de graficas el nivel de los **prospectos**, como el de los **colaboradores**, asi con esto poder tomar una mejor desicion al momento de escoger a un **programador** para alguna **vacante**.
-
-### Instrucciones:
-1. Configurar entorno para PHP 
-2. Crear la BD Interviews
-3. Instalar [**Composer**](https://getcomposer.org/download/ "Composer"), , dentro de la carpeta del proyecto, teclear *composer install*, para descargar las dependencias que se necesitan
-
-### Autores:
-* Jose Luis Leon Damas
-* Juan Carlos Flores Gonzalez
-* Magnolia Sandoval
+### Instructions (Empty Project) ###:
+1.- Update dependencies -> composer update
+2.- Set the correct values on app/config/parameters.yml.dist and copy/replace as app/config/parameters.yml
+3.- Generate pem files for JWT https://github.com/lexik/LexikJWTAuthenticationBundle/blob/master/Resources/doc/index.md#installation
+4.- Check JWT config -> bin/console lexik:jwt:check-config
+5.- Generate your Schema -> bin/console doctrine:schema:create
+6.- Add Your admin user -> bin/console  UserManage:add-user --is-admin
+6.  To Work!
