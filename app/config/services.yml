@@ -10,3 +10,8 @@ services:
      app.jwt_token_authenticator:
          class: AppBundle\Security\JwtAuthenticator
          arguments: ['@doctrine.orm.entity_manager', '@lexik_jwt_authentication.encoder']
+
+     app.listener.forgot_password:
+        class: AppBundle\Event\ForgotPasswordEventListener
+        tags:
+            - { name: kernel.event_listener, event: coop_tilleuls_forgot_password.create_token, method: onCreateToken}

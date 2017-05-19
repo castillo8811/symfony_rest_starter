@@ -8,3 +8,7 @@ logout:
 homepage:
     path:   /
     defaults:  { _controller: AppBundle:Default:index}
+
+coop_tilleuls_forgot_password:
+    resource: '@CoopTilleulsForgotPasswordBundle/Resources/config/routing.xml'
+    prefix:   '/forgot-password'
