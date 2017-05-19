@@ -51,4 +51,5 @@ security:
         - { path: ^/api/login,        roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,              roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/login,            roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/,                 roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/forgot-password/,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,                 roles: IS_AUTHENTICATED_FULLY}
