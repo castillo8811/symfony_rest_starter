@@ -13,5 +13,22 @@ services:
 
      app.listener.forgot_password:
         class: AppBundle\Event\ForgotPasswordEventListener
+        arguments:
+             templating: "@twig"
+             mailer:     "@mailer"
+             manager:    "@doctrine.orm.entity_manager"
         tags:
             - { name: kernel.event_listener, event: coop_tilleuls_forgot_password.create_token, method: onCreateToken}
+            - { name: templating.helper, alias: templating, event: coop_tilleuls_forgot_password.create_token, method: onCreateToken}
+            - { name: kernel.event_listener, event: coop_tilleuls_forgot_password.update_password, method: onUpdatePassword }
+
+     kernel.event_listener.json_request_transformer:
+         class: Qandidate\Common\Symfony\HttpKernel\EventListener\JsonRequestTransformerListener
+         tags:
+           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 100 }
+
+     app.doctrine.hash_password_listener:
+            class: AppBundle\Doctrine\HashPasswordListener
+            autowire: true
+            tags:
+                - { name: doctrine.event_subscriber }

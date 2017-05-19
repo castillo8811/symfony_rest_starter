@@ -11,4 +11,4 @@ homepage:
 
 coop_tilleuls_forgot_password:
     resource: '@CoopTilleulsForgotPasswordBundle/Resources/config/routing.xml'
-    prefix:   '/forgot-password'
+    prefix:   '/api/forgot-password'

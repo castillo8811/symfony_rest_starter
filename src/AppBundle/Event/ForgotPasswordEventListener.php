@@ -5,7 +5,12 @@ use CoopTilleuls\ForgotPasswordBundle\Event\ForgotPasswordEvent;
 
 class ForgotPasswordEventListener
 {
-    // ...
+    public function __construct(\Twig_Environment $twig, \Swift_Mailer $mailer, \Doctrine\ORM\EntityManager $manager)
+    {
+        $this->templating = $twig;
+        $this->mailer = $mailer;
+        $this->manager=$manager;
+    }
 
     /**
      * @param ForgotPasswordEvent $event
@@ -18,7 +23,7 @@ class ForgotPasswordEventListener
         $swiftMessage = new \Swift_Message(
             'Reset of your password',
             $this->templating->render(
-                'AppBundle:ResetPassword:mail.html.twig',
+             'security/forgot-password.html.twig',
                 [
                     'reset_password_url' => sprintf('http://www.example.com/forgot-password/%s', $passwordToken->getToken()),
                 ]
@@ -42,6 +47,6 @@ class ForgotPasswordEventListener
         $passwordToken = $event->getPasswordToken();
         $user = $passwordToken->getUser();
         $user->setPlainPassword($event->getPassword());
-        $this->userManager->updateUser($user);
+        $this->manager->persist($user);
     }
 }
