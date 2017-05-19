@@ -76,7 +76,7 @@ coop_tilleuls_forgot_password:
 # Nelmio CORS Configuration
 nelmio_cors:
     defaults:
-        allow_credentials: false
+        allow_credentials: true
         allow_origin: ['*']
         allow_headers: ['*']
         allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
