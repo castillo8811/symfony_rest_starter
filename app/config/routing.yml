@@ -9,6 +9,12 @@ homepage:
     path:   /
     defaults:  { _controller: AppBundle:Default:index}
 
-coop_tilleuls_forgot_password:
-    resource: '@CoopTilleulsForgotPasswordBundle/Resources/config/routing.xml'
-    prefix:   '/api/forgot-password'
+coop_tilleuls_forgot_password.reset:
+    path:   '/api/forgot-password'
+    defaults:  { _controller:  coop_tilleuls_forgot_password.controller.forgot_password:resetPasswordAction}
+    methods:  [POST]
+
+coop_tilleuls_forgot_password.update:
+    path:   '/api/reset-password/{tokenValue}'
+    defaults:  { _controller: coop_tilleuls_forgot_password.controller.forgot_password:updatePasswordAction}
+    methods:  [POST]

@@ -23,8 +23,11 @@ security:
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
                 require_previous_session: false
 
-        reset_password:
+        forgot_password:
              pattern:  ^/api/forgot-password
+             anonymous: true
+        reset_password:
+             pattern:  ^/api/reset-password
              anonymous: true
         api:
             pattern:   ^/api
@@ -51,6 +54,7 @@ security:
 
     access_control:
         - { path: ^/api/login,             roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/forgot-password/,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/forgot-password,   role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/reset-password/,   role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,                   roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/login,                 roles: IS_AUTHENTICATED_ANONYMOUSLY }
